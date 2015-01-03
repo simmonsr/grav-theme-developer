@@ -1,0 +1,64 @@
+{% set projects = page.collection() %}
+
+{% if projects %}
+  {% for project in projects %}
+    {% if loop.first %}
+      <div class="item featured text-center">
+        <h3 class="title">
+          <a href="{{ project.header.link.url | default('#') }}">{{ project.title }}</a>
+          {% if project.header.ribbon and not project.header.cover %}<span class="label label-theme">{{ project.header.ribbon }}</span>{% endif %}
+        </h3>
+
+        <p class="summary">{{ project.summary | striptags }}</p>
+
+        {% if project.header.cover %}
+          <div class="featured-image">
+            <a href="{{ project.header.link.url | default('#') }}">
+              <img class="img-responsive project-image" src="{{ project.header.cover }}" alt="project {{ project.slug }}" />
+            </a>
+
+            {% if project.header.ribbon %}
+              <div class="ribbon">
+                <div class="text">{{ project.header.ribbon }}</div>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="desc text-left">{{ project.content }}</div>
+
+        {% if project.header.link %}
+          <a class="btn btn-cta-secondary" href="{{ project.link.url }}"><i class="fa fa-thumbs-o-up"></i> {{ project.header.link.title }}</a>
+        {% endif %}
+      </div>
+
+    {% else %}
+
+      <div class="item row">
+        <a class="col-md-4 col-sm-4 col-xs-12" href="{{ project.header.link.url | default('#') }}">
+          {% if project.header.cover %}
+            <img class="img-responsive project-image" src="{{ project.header.cover }}" alt="project {{ project.slug }}" />
+          {% endif %}
+        </a>
+        <div class="desc col-md-8 col-sm-8 col-xs-12">
+          <h3 class="title">
+            <a href="{{ project.header.link.url | default('#') }}">{{ project.title }}</a>
+            {% if project.header.ribbon %}<span class="label label-theme">{{ project.header.ribbon }}</span>{% endif %}
+          </h3>
+
+          <div>{{ project.content }}</div>
+
+          {% if project.header.link %}
+            <p><a class="more-link" href="{{ project.header.link.url }}"><i class="fa fa-external-link"></i> {{ project.header.link.title }}</a></p>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if not loop.last %}
+      <hr class="divider" />
+    {% endif %}
+  {% endfor %}
+{% else %}
+  <h2>No Projects Found.</h2>
+{% endif %}

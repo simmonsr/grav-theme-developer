@@ -1,0 +1,12 @@
+{% set collection = page.collection() %}
+
+{% if collection | length %}
+  {% for item in collection %}
+    <div class="item">
+      <h3 class="title">{{ item.title }} - <span class="place"><a href="#">{{ item.header.place }}</a></span> <span class="year">({{ item.header.year }})</span></h3>
+      {{ item.content }}
+    </div>
+  {% endfor %}
+{% else %}
+  <h2>No Experience Found.</h2>
+{% endif %}
