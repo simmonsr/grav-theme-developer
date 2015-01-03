@@ -1,19 +1,17 @@
-{% set projects = page.collection() %}
+{% set collection = page.collection() %}
 
-{% if projects %}
-  {% for project in projects %}
+{% if collection %}
+  {% for item in collection %}
     <div class="item">
       <h3 class="title">
-        <a href="{{ project.header.link.url | default('#') }}">{{ project.title }}</a>
-        {% if project.header.ribbon %}<span class="label label-theme">{{ project.header.ribbon }}</span>{% endif %}
+        <a href="{{ item.header.link.url | default('#') }}">{{ item.title }}</a>
+        {% if item.header.label %}<span class="label label-theme">{{ item.header.label }}</span>{% endif %}
       </h3>
-      <p class="summary">{{ project.summary | striptags }}</p>
+      <p class="summary">{{ item.summary | striptags }}</p>
 
-      {% if project.header.link %}
-        <p><a class="more-link" href="{{ project.header.link.url }}"><i class="fa fa-external-link"></i> {{ project.header.link.title }}</a></p>
+      {% if item.header.link %}
+        <p><a class="more-link" href="{{ item.header.link.url }}"><i class="fa fa-external-link"></i> {{ item.header.link.title }}</a></p>
       {% endif %}
     </div>
   {% endfor %}
-{% else %}
-  <h2>No Projects Found.</h2>
 {% endif %}

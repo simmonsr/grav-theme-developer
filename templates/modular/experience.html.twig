@@ -7,6 +7,8 @@
       {{ item.content }}
     </div>
   {% endfor %}
-{% else %}
-  <h2>No Experience Found.</h2>
+
+  {% if theme_config.coderwall %}
+    <p><a class="more-link" href="https://coderwall.com/{{ theme_config.coderwall }}"><i class="fa fa-external-link"></i> More on Coderwall</a></p>
+  {% endif %}
 {% endif %}

@@ -24,6 +24,9 @@ profile:
 # Github
 github: "caseyscarborough"
 
+# Coderwall
+coderwall: "tnajdek"
+
 # RSS Feed
 rss_feed:
   url: "http://feeds.feedburner.com/TechCrunch/startups"

@@ -1,6 +1,6 @@
 ---
 title: "Project Title Cras eget lacus"
-ribbon: "Open Source"
+label: "Open Source"
 link:
   url: "#"
   title: "View on Github"

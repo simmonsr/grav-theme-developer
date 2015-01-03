@@ -1,3 +1,11 @@
+# v2.0.1
+## 01/03/2015
+
+1. [](#new)
+  * Added support for Coderwall link, you need to update <code>coderwall</code> key on theme config file.
+  * Add again the label on first project and change key from ribbon key and label key.
+  * Change projects module collection value to standard at same of all other modules collection name.
+
 # v2.0
 ## 22 Dec 2014
 
