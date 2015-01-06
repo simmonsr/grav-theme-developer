@@ -52,70 +52,70 @@
     {% endblock %}
   </head>
 
-    {% block body %}<body id="page-top" class="index">{% endblock %}
-      {% block body_header %}
-        <header class="header">
-          <div class="container">
-            {% set profile_image = (theme_config.profile.avatar_url) ?: 'http://gravatar.com/avatar/' ~ site.author.email | md5 ~ '?s=180' %}
-            <img class="profile-image img-responsive pull-left img-circle" src="{{ profile_image }}" alt="{{ theme_config.profile.name | default(site.author.name) }}" height="180" />
+  {% block body %}<body id="page-top" class="index">{% endblock %}
+    {% block body_header %}
+      <header class="header">
+        <div class="container">
+          {% set profile_image = (theme_config.profile.avatar_url) ?: 'http://gravatar.com/avatar/' ~ site.author.email | md5 ~ '?s=180' %}
+          <img class="profile-image img-responsive pull-left img-circle" src="{{ profile_image }}" alt="{{ theme_config.profile.name | default(site.author.name) }}" height="180" />
 
-            <div class="profile-content pull-left">
-              <h1 class="name">{{ theme_config.profile.name | default(site.author.name) }}</h1>
-              <h2 class="desc">{{ theme_config.profile.desc | default(site.metadata.description) }}</h2>
+          <div class="profile-content pull-left">
+            <h1 class="name">{{ theme_config.profile.name | default(site.author.name) }}</h1>
+            <h2 class="desc">{{ theme_config.profile.desc | default(site.metadata.description) }}</h2>
 
-              {% if theme_config.social.networks | length %}
-                <ul class="social list-inline">
-                  {% for network in theme_config.social.networks %}
-                    <li class="{% if network == theme_config.social.networks | last %}last-item{% endif %}"><a href="{{ network.url }}"><i class="fa fa-{{ network.icon }}"></i>{{ network.title }}</a></li>
-                  {% endfor %}
-                </ul>
-              {% endif %}
-            </div>
-            <a class="btn btn-cta-primary pull-right" href="{{ theme_config.contact_url | default(base_url) }}"><i class="fa fa-paper-plane"></i> Contact Me</a>
+            {% if theme_config.social.networks | length %}
+              <ul class="social list-inline">
+                {% for network in theme_config.social.networks %}
+                  <li class="{% if network == theme_config.social.networks | last %}last-item{% endif %}"><a href="{{ network.url }}"><i class="fa fa-{{ network.icon }}"></i>{{ network.title }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
-        </header>
-      {% endblock %}
+          <a class="btn btn-cta-primary pull-right" href="{{ theme_config.contact_url | default(base_url) }}"><i class="fa fa-paper-plane"></i> Contact Me</a>
+        </div>
+      </header>
+    {% endblock %}
 
-      {% block body_content %}
-        <div class="container sections-wrapper">
-          <div class="row">
-            <div class="primary col-md-12 col-sm-12 col-xs-12">
-              <section class="{{ page.header.section_class | default(page.slug) }} section">
-                <div class="section-inner">
-                  <h2 class="heading">{{ page.title }}</h2>
-                  <div class="content">{{ page.content }}</div>
-                </div>
-              </section>
-            </div>
+    {% block body_content %}
+      <div class="container sections-wrapper">
+        <div class="row">
+          <div class="primary col-md-12 col-sm-12 col-xs-12">
+            <section class="{{ page.header.section_class | default(page.slug) }} section">
+              <div class="section-inner">
+                <h2 class="heading">{{ page.title }}</h2>
+                <div class="content">{{ page.content }}</div>
+              </div>
+            </section>
           </div>
         </div>
-      {% endblock %}
+      </div>
+    {% endblock %}
 
-      {% block body_footer %}
-        <footer class="footer">
-          <div class="container text-center">
-            <small class="copyright">Copyright &copy; {{ 'NOW' | date('Y') }} by {{ site.title }} - Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">3rd Wave Media</a> for developers</small>
-          </div>
-        </footer>
-      {% endblock %}
+    {% block body_footer %}
+      <footer class="footer">
+        <div class="container text-center">
+          <small class="copyright">Copyright &copy; {{ 'NOW' | date('Y') }} by {{ site.title }} - Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">3rd Wave Media</a> for developers</small>
+        </div>
+      </footer>
+    {% endblock %}
 
-      {% block body_js %}
-        {% do assets.add('theme://assets/plugins/jquery-1.11.1.min.js', 106) %}
-        {% do assets.add('theme://assets/plugins/jquery-migrate-1.2.1.min.js', 105) %}
-        {% do assets.add('theme://assets/plugins/bootstrap/js/bootstrap.min.js', 104) %}
+    {% block body_js %}
+      {% do assets.add('theme://assets/plugins/jquery-1.11.1.min.js', 106) %}
+      {% do assets.add('theme://assets/plugins/jquery-migrate-1.2.1.min.js', 105) %}
+      {% do assets.add('theme://assets/plugins/bootstrap/js/bootstrap.min.js', 104) %}
 
-        {% if theme_config.rss_feed %}
-          {% do assets.add('theme://assets/plugins/jquery-rss/dist/jquery.rss.min.js', 103) %}
-        {% endif %}
+      {% if theme_config.rss_feed %}
+        {% do assets.add('theme://assets/plugins/jquery-rss/dist/jquery.rss.min.js', 103) %}
+      {% endif %}
 
-        {% if theme_config.github %}
-          {% do assets.add('http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js', 102) %}
-          {% do assets.add('http://caseyscarborough.github.io/github-activity/github-activity-0.1.0.min.js', 101) %}
-        {% endif %}
+      {% if theme_config.github %}
+        {% do assets.add('http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js', 102) %}
+        {% do assets.add('http://caseyscarborough.github.io/github-activity/github-activity-0.1.0.min.js', 101) %}
+      {% endif %}
 
-        {% do assets.add('theme://assets/js/main.js', 100) %}
+      {% do assets.add('theme://assets/js/main.js', 100) %}
 
-        {{ assets.js() }}
-      {% endblock %}
-    </body>
+      {{ assets.js() }}
+    {% endblock %}
+  </body>
 </html>

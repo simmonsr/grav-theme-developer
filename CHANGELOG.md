@@ -1,3 +1,10 @@
+# v2.0.2
+## 01/04/2015
+
+1. [](#bugfix)
+  * Fixed header.link object in the projects modules.
+  * Move demo content to folder `_demo`.
+
 # v2.0.1
 ## 01/03/2015
 
